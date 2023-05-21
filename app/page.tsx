@@ -14,8 +14,8 @@ export default function Home() {
             const query = await scrapeWithoutGoogle(links);
             googleQueries.push(query);
         }
-        console.log("googleQueries",googleQueries);
-        setResult(JSON.stringify(googleQueries))
+        console.log("googleQueries",googleQueries[0]);
+        setResult(JSON.stringify(googleQueries[0]))
     };
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -48,7 +48,7 @@ export default function Home() {
             <div>
                 <h1>All Results html code</h1>
                 <div>
-                    {JSON.stringify()}
+                    {result}
                 </div>
 
             </div>

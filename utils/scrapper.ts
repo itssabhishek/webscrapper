@@ -31,7 +31,7 @@ export async function scrapeWithoutGoogle(query: string) {
     const response = await fetch(query);
     const html = await response.text();
     const $ = cheerio.load(html);
-    return $.html()
+    return $.text()
   } catch (error) {
     console.error('Error scraping website:', error);
   }
