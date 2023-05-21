@@ -10,7 +10,7 @@ export async function scrapeWebsite(query: string) {
     let count:number = 0;
 
     topLinks.each((_, element) => {
-      if (count < 5) {
+      if (count < 20) {
         const value = $(element).attr('href');
         if (value) {
           links.push(value);
@@ -25,3 +25,14 @@ export async function scrapeWebsite(query: string) {
   }
 }
 
+
+export async function scrapeWithoutGoogle(query: string) {
+  try {
+    const response = await fetch(query);
+    const html = await response.text();
+    const $ = cheerio.load(html);
+    return $.html()
+  } catch (error) {
+    console.error('Error scraping website:', error);
+  }
+}
